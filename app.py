@@ -43,7 +43,8 @@ ax.legend(['Non-Default', 'Default'])
 st.pyplot(fig)
 
 # Prepare Data for Modeling
-X = data[['credit_score', 'income', 'debt_to_income', 'loan_amount', 'income_to_loan_ratio']]
+features = ['credit_score', 'income', 'debt_to_income', 'loan_amount', 'income_to_loan_ratio']
+X = data[features]
 y = data['default_status']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -85,20 +86,26 @@ st.pyplot(fig)
 
 # SHAP Explainability
 st.subheader("🔎 SHAP Explainability")
-explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X_test)
+try:
+    # Initialize SHAP explainer
+    explainer = shap.TreeExplainer(model, feature_names=features)
+    # Compute SHAP values for X_test (ensure DataFrame format)
+    shap_values = explainer.shap_values(X_test, check_additivity=False)
 
-# SHAP Summary Plot
-st.write("**Feature Importance for Default (Class 1)**")
-fig, ax = plt.subplots(figsize=(10, 6))
-shap.summary_plot(shap_values[1], X_test, show=False)
-st.pyplot(fig)
+    # SHAP Summary Plot for positive class (default = 1)
+    st.write("**Feature Importance for Default (Class 1)**")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    shap.summary_plot(shap_values[1], X_test, feature_names=features, show=False)
+    st.pyplot(fig)
 
-# SHAP Dependence Plot (for credit_score)
-st.write("**Credit Score vs. Debt-to-Income Interaction**")
-fig, ax = plt.subplots(figsize=(10, 6))
-shap.dependence_plot('credit_score', shap_values[1], X_test, interaction_index='debt_to_income', show=False)
-st.pyplot(fig)
+    # SHAP Dependence Plot for credit_score
+    st.write("**Credit Score vs. Debt-to-Income Interaction**")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    shap.dependence_plot('credit_score', shap_values[1], X_test, feature_names=features, 
+                         interaction_index='debt_to_income', show=False)
+    st.pyplot(fig)
+except Exception as e:
+    st.error(f"Error in SHAP visualization: {str(e)}. Please check feature names and data consistency.")
 
 # Interactive Prediction
 st.subheader("🛠️ Predict Loan Default")
@@ -110,24 +117,28 @@ with st.form("prediction_form"):
     submitted = st.form_submit_button("Predict")
 
     if submitted:
-        input_data = pd.DataFrame({
-            'credit_score': [credit_score],
-            'income': [income],
-            'debt_to_income': [debt_to_income],
-            'loan_amount': [loan_amount],
-            'income_to_loan_ratio': [income / loan_amount]
-        })
-        pred = model.predict(input_data)[0]
-        pred_proba = model.predict_proba(input_data)[0][1]
-        st.write(f"**Prediction:** {'Default' if pred == 1 else 'Non-Default'}")
-        st.write(f"**Default Probability:** {pred_proba:.2%}")
+        try:
+            input_data = pd.DataFrame({
+                'credit_score': [credit_score],
+                'income': [income],
+                'debt_to_income': [debt_to_income],
+                'loan_amount': [loan_amount],
+                'income_to_loan_ratio': [income / loan_amount]
+            }, columns=features)
+            pred = model.predict(input_data)[0]
+            pred_proba = model.predict_proba(input_data)[0][1]
+            st.write(f"**Prediction:** {'Default' if pred == 1 else 'Non-Default'}")
+            st.write(f"**Default Probability:** {pred_proba:.2%}")
 
-        # SHAP for Individual Prediction
-        shap_vals = explainer.shap_values(input_data)
-        st.write("**Why this prediction?**")
-        fig, ax = plt.subplots(figsize=(10, 4))
-        shap.decision_plot(explainer.expected_value[1], shap_vals[1], input_data, show=False)
-        st.pyplot(fig)
+            # SHAP for Individual Prediction
+            shap_vals = explainer.shap_values(input_data, check_additivity=False)
+            st.write("**Why this prediction?**")
+            fig, ax = plt.subplots(figsize=(10, 4))
+            shap.decision_plot(explainer.expected_value[1], shap_vals[1], input_data, 
+                              feature_names=features, show=False)
+            st.pyplot(fig)
+        except Exception as e:
+            st.error(f"Error in prediction: {str(e)}")
 
 # Downloadable Report
 st.subheader("📥 Download Report")
