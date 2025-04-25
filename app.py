@@ -53,13 +53,17 @@ st.write(f"Precision: {precision_score(y_test, y_pred):.2f}")
 st.write(f"Recall: {recall_score(y_test, y_pred):.2f}")
 st.write(f"ROC-AUC: {roc_auc_score(y_test, y_pred):.2f}")
 
-# SHAP
+# SHAP Explainability
 st.subheader("SHAP Explainability")
 # Use TreeExplainer for RandomForestClassifier
 explainer = shap.TreeExplainer(model)
-# Compute SHAP values for the test set (use probability outputs for binary classification)
+# Compute SHAP values for the test set
 shap_values = explainer.shap_values(X_test_scaled)
 
+# Convert X_test_scaled to a DataFrame with feature names
+X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X_test.columns)
+
 # SHAP summary plot (for binary classification, use the SHAP values for the positive class)
-shap.summary_plot(shap_values[1], X_test, show=False)
+shap.summary_plot(shap_values[1], X_test_scaled_df, show=False)
 st.pyplot(plt.gcf())
+
