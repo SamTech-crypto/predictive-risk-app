@@ -55,9 +55,11 @@ st.write(f"ROC-AUC: {roc_auc_score(y_test, y_pred):.2f}")
 
 # SHAP
 st.subheader("SHAP Explainability")
-explainer = shap.Explainer(model, X_train_scaled)
-shap_values = explainer(X_test_scaled)
+# Use TreeExplainer for RandomForestClassifier
+explainer = shap.TreeExplainer(model)
+# Compute SHAP values for the test set (use probability outputs for binary classification)
+shap_values = explainer.shap_values(X_test_scaled)
 
-# SHAP summary
-shap.summary_plot(shap_values, X_test, show=False)
-st.pyplot()
+# SHAP summary plot (for binary classification, use the SHAP values for the positive class)
+shap.summary_plot(shap_values[1], X_test, show=False)
+st.pyplot(plt.gcf())
