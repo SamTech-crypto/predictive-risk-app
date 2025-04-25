@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Samuel Mwendwa's Financial Strategist Portfolio: Fintech, ESG, and AI-driven solutions for SMEs and startups.">
+    <meta name="author" content="Samuel Mwendwa">
+    <title>Samuel Mwendwa - Financial Strategist</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAKCgoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .gradient-hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .animate-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .animate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-20 shadow-lg" role="navigation" aria-label="Main navigation">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Samuel Mwendwa</h1>
+            <button class="md:hidden focus:outline-none" aria-label="Toggle menu" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <ul class="hidden md:flex space-x-6" id="nav-menu">
+                <li><a href="#home" class="hover:text-blue-300 transition-colors">Home</a></li>
+                <li><a href="#projects" class="hover:text-blue-300 transition-colors">Projects</a></li>
+                <li><a href="#solutions" class="hover:text-blue-300 transition-colors">Solutions</a></li>
+                <li><a href="#testimonials" class="hover:text-blue-300 transition-colors">Testimonials</a></li>
+                <li><a href="#about" class="hover:text-blue-300 transition-colors">About</a></li>
+                <li><a href="#contact" class="hover:text-blue-300 transition-colors">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="gradient-hero text-white py-24" role="region" aria-label="Home">
+            <div class="container mx-auto text-center">
+                <h2 class="text-5xl font-extrabold mb-6 fade-in">Your Partner in Financial Innovation</h2>
+                <p class="text-xl max-w-3xl mx-auto mb-8 fade-in">Samuel Mwendwa delivers fintech, ESG, and AI-driven solutions to empower SMEs and startups with growth-focused financial strategies.</p>
+                <a href="#contact" class="inline-block bg-white text-blue-900 font-semibold py-3 px-8 rounded-full hover:bg-blue-100 transition-colors fade-in">Book a Consultation</a>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white" role="region" aria-label="Projects">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 fade-in">Innovative Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">FinDash</h3>
+                        <p class="text-gray-600 mb-4">Real-time SME dashboard for KPIs, burn rate, and runway analysis.</p>
+                        <p><strong>Tools:</strong> Tableau, SQL, Python</p>
+                        <div class="mt-4 space-x-4">
+                            <a href="https://github.com/SamTech-crypto/findash" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
+                            <a href="https://public.tableau.com/app/profile/samuel.mwendwa" target="_blank" class="text-blue-600 hover:underline">Tableau Demo</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">AutoModeler</h3>
+                        <p class="text-gray-600 mb-4">Automated 3-statement financial models from user inputs.</p>
+                        <p><strong>Tools:</strong> Python, Streamlit</p>
+                        <div class="mt-4 space-x-4">
+                            <a href="https://github.com/SamTech-crypto/automodeler" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
+                            <a href="https://samtech-crypto-automodeler.streamlit.app" target="_blank" class="text-blue-600 hover:underline">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">ESG Radar</h3>
+                        <p class="text-gray-600 mb-4">ESG scoring engine for small-scale investments.</p>
+                        <p><strong>Tools:</strong> Python, BI Tools</p>
+                        <div class="mt-4">
+                            <a href="https://github.com/SamTech-crypto/esg-radar" target="_blank" class="text-blue-600 hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Solutions Section -->
+        <section id="solutions" class="py-20 bg-gray-100" role="region" aria-label="Solutions">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 fade-in">Solving Your Business Challenges</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">Inefficient Financial Modeling</h3>
+                        <p class="text-gray-600 mb-4">Manual financial models are time-consuming and error-prone. My AutoModeler tool automates 3-statement models, saving time and ensuring accuracy.</p>
+                        <a href="#contact" class="text-blue-600 hover:underline">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">Lack of ESG Insights</h3>
+                        <p class="text-gray-600 mb-4">Investors demand ESG compliance. ESG Radar provides clear, actionable scores for small investments, aligning with sustainable goals.</p>
+                        <a href="#contact" class="text-blue-600 hover:underline">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg animate-card fade-in">
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-900">Complex DeFi Navigation</h3>
+                        <p class="text-gray-600 mb-4">DeFi markets are volatile and complex. My DeFi Analytics Suite offers real-time insights to help SMEs make informed decisions.</p>
+                        <a href="#contact" class="text-blue-600 hover:underline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-white" role="region" aria-label="Testimonials">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 fade-in">What Clients Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg fade-in">
+                        <p class="text-gray-600 mb-4">"Samuel's FinDash transformed how we track our KPIs. It's intuitive and saves us hours every week."</p>
+                        <p class="font-semibold">Jane Doe, CEO of TechSME</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg fade-in">
+                        <p class="text-gray-600 mb-4">"The ESG Radar tool helped us align our investments with sustainability goals, impressing our stakeholders."</p>
+                        <p class="font-semibold">John Smith, CFO of GreenVentures</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-lg fade-in">
+                        <p class="text-gray-600 mb-4">"Samuel's expertise in DeFi analytics gave us the confidence to enter new markets with clarity."</p>
+                        <p class="font-semibold">Emily Chen, Founder of CryptoStartup</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-100" role="region" aria-label="About">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8 fade-in">About Samuel Mwendwa</h2>
+                <p class="text-lg max-w-3xl mx-auto fade-in">As a Financial Strategist with FMVA, BIDA, CMSA, and CPA credentials, I blend financial expertise with technical prowess in Python, Java, SQL, and BI tools. My mission is to empower SMEs and startups with fintech, ESG, and AI-driven solutions that drive scalable growth.</p>
+                <a href="#contact" class="mt-6 inline-block bg-blue-600 text-white py-3 px-8 rounded-full hover:bg-blue-700 transition-colors fade-in">Connect with Me</a>
+            </div>
+        </section>
+        <!-- XLSX/CSV Preview Section -->
+        <section class="container mx-auto py-20" id="file-preview-section">
+            <h2 class="text-2xl font-bold mb-4">Try XLSX/CSV Preview & Download</h2>
+            <input 
+                type="file"
+                id="fileUpload"
+                class="border p-2 mb-4 block"
+                accept=".xlsx"
+            />
+            <div id="preview" class="overflow-auto mb-4 text-sm text-gray-800 bg-white rounded shadow max-h-64"></div>
+            <button 
+                id="downloadCsvBtn"
+                class="bg-blue-700 text-white px-4 py-2 rounded disabled:opacity-50"
+                disabled
+            >Download as CSV</button>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="gradient-hero text-white py-20" role="region" aria-label="Contact">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-8 fade-in">Ready to Transform Your Finances?</h2>
+                <p class="text-lg max-w-2xl mx-auto mb-8 fade-in">Let's discuss consulting, partnerships, or SaaS solutions to unlock your business's potential.</p>
+                <a href="mailto:samuel@financialstrategist.com" class="inline-block bg-white text-blue-900 font-semibold py-3 px-8 rounded-full hover:bg-blue-100 transition-colors fade-in">Contact Me Now</a>
+            </div>
+        </section>
+        <!-- LinkedIn & Newsletter Animated CTA Section -->
+        <section class="py-12 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50">
+            <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-6">
+                <!-- LinkedIn Button -->
+                <a href="https://www.linkedin.com/in/samuel-mwendwa/" target="_blank"
+                   class="flex items-center space-x-3 px-6 py-3 rounded-full bg-blue-700 text-white font-semibold hover:bg-blue-800 shadow-lg transform transition duration-300 hover:scale-105 linkedin-cta"
+                   style="text-decoration: none;">
+                    <svg width="28" height="28" fill="currentColor" class="mr-2" viewBox="0 0 24 24">
+                        <path d="M21 21h-4v-6c0-1.067-.934-2-2-2s-2 .933-2 2v6H7V9h4v2a3.977 3.977 0 0 1 3-1c2.211 0 4 1.789 4 4v7zM5 21H1V9h4v12zM3 7.41C1.839 7.41.9 6.474.9 5.31c0-1.17.934-2.11 2.1-2.11C4.161 3.2 5.1 4.13 5.1 5.31c0 1.164-.934 2.1-2.1 2.1z"/>
+                    </svg>
+                    <span>Connect on LinkedIn</span>
+                </a>
+                <!-- Newsletter Subscribe Button -->
+                <a href="https://www.linkedin.com/newsletters/scaling-edge-7280665831749898242/" target="_blank"
+                   class="flex items-center space-x-3 px-6 py-3 rounded-full bg-white border border-blue-600 text-blue-700 font-semibold hover:bg-blue-100 shadow-lg transform transition duration-300 hover:scale-105 newsletter-cta"
+                   style="text-decoration: none;">
+                    <svg class="mr-2" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M22 4H2v16h20V4zm-2 2l-8 7-8-7M4 20h16"></path>
+                    </svg>
+                    <span>Subscribe to Scaling Edge Newsletter</span>
+                </a>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6" role="contentinfo">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Samuel Mwendwa. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('hidden');
+        }
+        // GSAP animations for fade-in effects and CTAs
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            document.querySelectorAll('.fade-in').forEach(element => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6
+                });
+            });
+            // Animate LinkedIn & Newsletter CTA
+            if(window.gsap){
+                gsap.from('.linkedin-cta', { y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
+                gsap.from('.newsletter-cta', { y: 30, opacity: 0, duration: 1, delay: 0.5, ease: "power3.out" });
+            }
+        });
+
+        // XLSX Upload/Preview/Download UX
+        let currentSheetData = null;
+        document.getElementById('fileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                try {
+                    const data = new Uint8Array(ev.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, defval: '' });
+                    const filteredData = jsonData.filter(row => row.some(cell => cell !== '' && cell != null));
+                    let headerRowIndex = filteredData.findIndex((row, i) => row.filter(cell => cell !== '' && cell != null).length >= (filteredData[i + 1]?.filter(cell => cell !== '' && cell != null).length || 0));
+                    if (headerRowIndex === -1 || headerRowIndex > 25) headerRowIndex = 0;
+                    const dataToDisplay = filteredData.slice(headerRowIndex);
+                    currentSheetData = dataToDisplay;
+                    document.getElementById('preview').innerHTML = arrayToHtmlTable(dataToDisplay.slice(0, 20));
+                    document.getElementById('downloadCsvBtn').disabled = false;
+                } catch (err) {
+                    document.getElementById('preview').textContent = "Error: " + err.message;
+                    document.getElementById('downloadCsvBtn').disabled = true;
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        document.getElementById('downloadCsvBtn').addEventListener('click', function() {
+            if (!currentSheetData) return;
+            const csv = XLSX.utils.sheet_to_csv(XLSX.utils.aoa_to_sheet(currentSheetData));
+            const blob = new Blob([csv], { type: "text/csv" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "sheet.csv";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        function arrayToHtmlTable(arr) {
+            let html = '<table class="min-w-full text-xs"><tbody>';
+            arr.forEach((row, i) => {
+                html += `<tr${i==0? ' class="font-bold bg-blue-100"' : ''}>${row.map(cell => `<td class="p-1 border">${(cell ?? '').toString().substring(0,40)}</td>`).join('')}</tr>`;
+            });
+            html += '</tbody></table>';
+            return html;
+        }
+    </script>
+</body>
+</html>
